@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  django:
+    build:
+      context: ./django/
+      args:
+        MODE: development
+    command: python3 manage.py runserver 0.0.0.0:80
+    environment:
+      MODE: development
+      LOGS_ROOT: /var/log/digital_signature/
+    volumes:
+      - ./django/:/usr/src/app/
+      - ./:/usr/src/root/
+    ports:
+      - 8000:80
