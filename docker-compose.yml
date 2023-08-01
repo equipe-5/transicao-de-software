@@ -1,0 +1,24 @@
+version: "3.7"
+
+services:
+  django:
+    container_name: transition_django
+    restart: unless-stopped
+    env_file:
+      - ./envs/postgres.env
+    depends_on:
+      - postgres
+
+  postgres:
+    container_name: transition_postgres
+    image: postgres:15.3
+    ports:
+      - 5432:5432
+    restart: unless-stopped
+    env_file:
+      - ./envs/postgres.env
+    volumes:
+      - database:/var/lib/postgresql/data/
+
+volumes:
+  database:
