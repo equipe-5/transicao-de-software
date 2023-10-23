@@ -1,0 +1,39 @@
+{% csrf_token %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Lista de Fornecedores</title>
+</head>
+
+<body>
+    <h2>Fornecedores</h2>
+
+    <button><a href="/supplier/create/">Cadastrar Fornecedor</a></button>
+
+    <table>
+        <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>CNPJ</th>
+            <th>Endereço</th>
+            <th>Número</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+        </tr>
+    {% for supplier in suppliers %}
+        <tr>
+            <td>{{ supplier.name }}</td>
+            <td>{{ supplier.email }}</td>
+            <td>{{ supplier.cnpj }}</td>
+            <td>{{ supplier.address }}</td>
+            <td>{{ supplier.number }}</td>
+            <td>{{ supplier.city }}</td>
+            <td>{{ supplier.state }}</td>
+            <td><a href="/supplier/{{ supplier.id }}/edit/">Editar</a></td>
+        </tr>
+    {% endfor %}
+    </table>
+</body>
+
+</html>

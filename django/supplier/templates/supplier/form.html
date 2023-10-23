@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Formulário de Fornecedores</title>
+</head>
+
+<body>
+    <h2>Cadastrar Fornecedor</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <button type="submit">Salvar</button>
+    </form>
+</body>
+
+</html>
