@@ -1,0 +1,22 @@
+<!-- django/products/templates/product_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Products</title>
+    <link href="https://cdn.tailwindcss.com/2.2.19/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto py-8">
+        <h1 class="text-3xl font-bold mb-4">List of Products</h1>
+        <ul class="grid gap-4">
+            {% for product in products %}
+                <li class="p-4 bg-white shadow rounded">{{ product.name }}</li>
+            {% empty %}
+                <li class="p-4 bg-white shadow rounded">No products available</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
