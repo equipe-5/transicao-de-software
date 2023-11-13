@@ -5,20 +5,20 @@ services:
     build:
       context: ./django/
       args:
-        MODE: production
+        MODE: staging
     environment:
-      MODE: production
-      NUM_GUNICORN_WORKERS: 4
-      STATIC_ROOT: /var/www/digital_signature/static/
-      MEDIA_ROOT: /var/www/digital_signature/media/
-      LOGS_ROOT: /var/log/digital_signature/
+      MODE: staging
+      NUM_GUNICORN_WORKERS: 2
+      STATIC_ROOT: /var/www/transition/static/
+      MEDIA_ROOT: /var/www/transition/media/
+      LOGS_ROOT: /var/log/transition/
     logging:
       options:
         max-size: 1g
     volumes:
-      - static:/var/www/digital_signature/static/
-      - media:/var/www/digital_signature/media/
-      - logs:/var/log/digital_signature/
+      - static:/var/www/transition/static/
+      - media:/var/www/transition/media/
+      - logs:/var/log/transition/
 
 volumes:
   static:
