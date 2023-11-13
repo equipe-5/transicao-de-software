@@ -1,0 +1,30 @@
+
+<h1>Client List</h1>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Cellphone</th>
+            <th>RG</th>
+            <th>CPF</th>
+            <th>CEp</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %} 
+            <tr>
+                <td>{{ client.id }}</td>
+                <td>{{ client.nome }}</td>
+                <td>{{ client.email }}</td>
+                <td>R$ {{ client.cellphone }}</td>   
+                <td>R$ {{ client.rg }}</td>   
+                <td>R$ {{ client.cpf }}</td>   
+                <td>R$ {{ client.cep }}</td>   
+            </tr>
+        {% empty %}
+        <li class="p-4 bg-white shadow rounded">No clients available</li>
+        {% endfor %}
+    </tbody>
+</table>
