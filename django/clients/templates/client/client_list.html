@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block layout %}
+
+<h1 class="text-center mt-5" style="margin-bottom: 20px;">Client List</h1>
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Name</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Cellphone</th>
+                <th scope="col">RG</th>
+                <th scope="col">CPF</th>
+                <th scope="col">CEP</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for client in clients %} 
+                <tr>
+                    <td>{{ client.id }}</td>
+                    <td>{{ client.name }}</td>
+                    <td>{{ client.email }}</td>
+                    <td>R$ {{ client.cellphone }}</td>   
+                    <td>R$ {{ client.rg }}</td>   
+                    <td>R$ {{ client.cpf }}</td>   
+                    <td>R$ {{ client.cep }}</td>   
+                </tr>
+            {% empty %}
+            <div class="p-4 bg-white shadow rounded">No clients available</div>
+            {% endfor %}
+        </tbody>
+        </table>
+    </div>
+
+{% endblock layout %}
