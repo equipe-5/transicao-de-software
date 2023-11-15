@@ -1,7 +1,5 @@
 import os
 
-from django.utils.version import get_version
-
 
 # Settings
 
@@ -9,10 +7,6 @@ MODE = os.getenv('MODE')
 
 if MODE == 'production':
     from main.settings.production import *
-elif MODE == 'staging':
-    from main.settings.staging import *
-elif MODE == 'ci':
-    from main.settings.ci import *
 else:
     from main.settings.development import *
 

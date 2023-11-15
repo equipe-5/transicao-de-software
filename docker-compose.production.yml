@@ -19,6 +19,8 @@ services:
       - static:/var/www/transition/static/
       - media:/var/www/transition/media/
       - logs:/var/log/transition/
+    ports:
+      - 80:80
 
 volumes:
   static:
