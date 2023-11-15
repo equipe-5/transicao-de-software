@@ -1,13 +1,13 @@
-.PHONY: all codequality security prospector bandit safety
+.PHONY: all codequality security ruff bandit safety
 
 all: codequality security
 
-codequality: prospector
+codequality: ruff
 
 security: bandit safety
 
-prospector:
-	@ prospector .
+ruff:
+	@ ruff check . --show-source
 
 bandit:
 	@ bandit --recursive .

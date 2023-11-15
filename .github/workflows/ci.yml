@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          pip3 --disable-pip-version-check install --no-compile -r ./django/main/requirements/ci.txt
+          pip3 --disable-pip-version-check install --no-compile -r ./django/main/requirements/main.txt
+
+      - name: Ruff
+        run: |
+          cd django
+          ruff check . --show-source
+
+      - name: Bandit
+        run: |
+          cd django
+          bandit --recursive .
+
+      - name: Safety
+        run: |
+          cd django
+          printf -- '-r\0%s\0' main/requirements/*.txt | xargs -0 safety check --no-prompt --full-report

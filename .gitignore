@@ -1,6 +1,12 @@
+### Project ignores ###
+
+# Django structure
 django/SECRET_KEY
 django/main/media/*
 django/main/public_static/*
+
+# Caches
+.ruff_cache
 
 ### Python ###
 
