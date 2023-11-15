@@ -34,4 +34,4 @@ jobs:
       - name: Safety
         run: |
           cd django
-          printf -- '-r\0%s\0' main/requirements/*.txt | xargs -0 safety check --no-prompt --full-report
+          printf -- '-r\0%s\0' main/requirements/*.txt | xargs -0 safety check --full-report
