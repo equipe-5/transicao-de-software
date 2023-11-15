@@ -19,12 +19,11 @@ class ClientDetailView(DetailView):
     template_name = 'client/client_detail.html'
     context_object_name = 'clients'
 
-
 class ClientCreateView(CreateView):
 
     model = Client
     fields = '__all__'
-    template_name = 'client/cad_client.html'
+    template_name = 'client/client_register.html'
     success_url = reverse_lazy('client-list')
 
 class ClientUpdateView(UpdateView):

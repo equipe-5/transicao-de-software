@@ -1,94 +1,46 @@
+{% extends "base.html" %}
+{% block layout %}
+
 <tr>
     <td>
         <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-            Dados do Cliente
+            CADASTRO DE CLIENTE
         </p>
     </td>
 </tr>
-<table>
 
-
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                Código:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-            <button>Pesquisar</button>
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                Nome:
-                {{ form.name }}
-            </p>
-            <input style="margin-left: 90px;" type="text">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                E-mail:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                Celular:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                Telefone:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                RG:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                CPF:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-        </td>
-    </tr>
-    <tr>
-        <td>
-            <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-                CEP:
-            </p>
-            <input style="margin-left: 90px;" type="number">
-        </td>
-    </tr>
-</table>
-
-<table style="margin-left: 90px;">
-    <tr>
-        <td>
-            <button>+ NOVO</button>
-        </td>
-        <td>
-            <button>SALVAR</button>
-        </td>
-        <td>
-            <button>EDITAR</button>
-        </td>
-        <td>
-            <button>EXCLUIR</button>
-        </td>
-    </tr>
-</table>
+<form method="post">
+    {% csrf_token %}
+    
+    
+    <div style="width: 400px; padding-left: 90px;">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nome</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name" value="{{ name }}">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">E-mail</label>
+            <input type="email" class="form-control" id="email" aria-describedby="email" value="{{ email }}">
+        </div>
+        <div class="mb-3">
+            <label for="cellphone" class="form-label">Celular</label>
+            <input type="text" class="form-control" id="cellphone" aria-describedby="cellphone" value="{{ cellphone }}">
+        </div>
+        <div class="mb-3">
+            <label for="rg" class="form-label">RG</label>
+            <input type="text" class="form-control" id="rg" aria-describedby="rg" value="{{ rg }}">
+        </div>
+        <div class="mb-3">
+            <label for="cpf" class="form-label">CPF</label>
+            <input type="text" class="form-control" id="cpf" aria-describedby="cpf" value="{{ cpf }}">
+        </div>
+        <div class="mb-3">
+            <label for="cep" class="form-label">CEP</label>
+            <input type="text" class="form-control" id="cep" aria-describedby="cep" value="{{ cep }}">
+        </div>
+    
+        <input type="submit" value="Salvar">
+    </div>
+    
+</form>
+{% endblock layout %}
