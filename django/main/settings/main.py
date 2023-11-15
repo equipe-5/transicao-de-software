@@ -25,6 +25,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'main',
+    'core',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -102,6 +104,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+LOGIN_REDIRECT_URL = '/products'
 
 # Static files
 

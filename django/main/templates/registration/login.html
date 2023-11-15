@@ -1,46 +1,39 @@
-{% extends 'base.html' %}
+{% extends 'base.html' %} {% block layout %}
+<section class="d-flex align-items-center justify-content-center vh-100">
+  <div class="card p-4 rounded shadow">
+    {% if form.non_field_errors %}
+    <span class="alert-text"> Seu usuário ou senha estão incorretos</span>
+    {% endif %}
 
-{% block layout %}
-  <main>
-    <section>
+    <form role="form" novalidate="novalidate" method="POST">
+      {% csrf_token %}
+      <div class="mb-3">
+        <input
+          name="username"
+          type="text"
+          class="form-control {% if form.username.errors %}is-invalid{% endif %}"
+          placeholder="Nome de usuário"
+          aria-label="Nome de usuário"
+          autocomplete="off"
+        />
+        <div class="invalid-feedback">{{ form.username.errors }}</div>
+      </div>
+      <div class="mb-3">
+        <input
+          name="password"
+          type="password"
+          class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+          placeholder="Senha"
+          aria-label="Senha"
+          autocomplete="off"
+        />
+        <div class="invalid-feedback">{{ form.password.errors }}</div>
+      </div>
 
-      <p class="mb-0">Insira o usuário para entrar</p>
-
-      {% if form.non_field_errors %}
-        <span class="alert-text"> Seu usuário ou senha estão incorretos</span>
-      {% endif %}
-
-      <form role="form" novalidate="novalidate" method="POST">
-        {% csrf_token %}
-          <div>
-            <input
-              name="username"
-              type="text"
-              class="form-control {% if form.username.errors %}is-invalid{% endif %}"
-              placeholder="Nome de usuário"
-              aria-label="Nome de usuário"
-              autocomplete="off"
-            >
-            <div class="invalid-feedback">
-              {{ form.username.errors }}
-            </div>
-          </div>
-          <div>
-            <input
-              name="password"
-              type="password"
-              class="form-control {% if form.password.errors %}is-invalid{% endif %}"
-              placeholder="Senha"
-              aria-label="Senha"
-              autocomplete="off"
-            >
-            <div class="invalid-feedback">
-              {{ form.password.errors }}
-            </div>
-          </div>
-          <button type="submit"> Entrar </button>
-      </form>
-
-    </section>
-  </main>
+      <div class="text-center">
+        <button type="submit" class="btn btn-primary mx-auto">Entrar</button>
+      </div>
+    </form>
+  </div>
+</section>
 {% endblock layout %}
