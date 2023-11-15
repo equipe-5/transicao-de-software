@@ -1,0 +1,2 @@
+[bandit]
+exclude=manage.py,./docker/*,./*/migrations/*
