@@ -5,13 +5,22 @@ services:
     build:
       context: ./django/
       args:
-        MODE: development
-    command: python3 manage.py runserver 0.0.0.0:80
+        MODE: production
     environment:
-      MODE: development
-      LOGS_ROOT: /var/log/digital_signature/
+      MODE: production
+      NUM_GUNICORN_WORKERS: 4
+      STATIC_ROOT: /var/www/transition/static/
+      MEDIA_ROOT: /var/www/transition/media/
+      LOGS_ROOT: /var/log/transition/
+    logging:
+      options:
+        max-size: 1g
     volumes:
-      - ./django/:/usr/src/app/
-      - ./:/usr/src/root/
-    ports:
-      - 8000:80
+      - static:/var/www/transition/static/
+      - media:/var/www/transition/media/
+      - logs:/var/log/transition/
+
+volumes:
+  static:
+  media:
+  logs:

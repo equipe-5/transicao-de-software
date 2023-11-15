@@ -15,15 +15,20 @@ echo "Migrating models..."
 python3 manage.py migrate --noinput
 echo "Finished migrating models"
 
+function load_fixtures {
+    dir="$1"
+
+    if [ "$(ls -A */fixtures/default)" ]; then
+        python3 manage.py loaddata */fixtures/default/*.json
+    fi
+
+    if [ "$(ls -A "$dir")" ]; then
+        python3 manage.py loaddata "$dir"/*.json
+    fi
+}
+
 echo "Loading fixtures..."
-# python3 manage.py loaddata */fixtures/default/*.json
-# if [ "$MODE" = "production" ]; then
-#     python3 manage.py loaddata */fixtures/production/*.json
-# elif [ "$MODE" = "staging" ]; then
-#     python3 manage.py loaddata */fixtures/staging/*.json
-# elif [ "$MODE" = "development" ]; then
-    python3 manage.py loaddata */fixtures/development/*.json
-# fi
+load_fixtures "*/fixtures/$MODE"
 echo "Finished loading fixtures"
 
 if [ "$MODE" = "development" ]; then
