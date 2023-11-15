@@ -7,14 +7,9 @@ DEBUG = False
 
 # HTTPS
 
-ALLOWED_HOSTS = [
-    os.getenv('PUBLIC_IP', '0.0.0.0'),
-    os.getenv('PUBLIC_URL', 'localhost'),
-]
+ALLOWED_HOSTS = [value.strip() for value in os.getenv('ALLOWED_HOSTS', '').split(',') if value.strip()]
 
-CSRF_TRUSTED_ORIGINS = [
-    'http://django:80',
-]
+CSRF_TRUSTED_ORIGINS = [value.strip() for value in os.getenv('CSRF_TRUSTED_ORIGINS', '').split(',') if value.strip()]
 
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
