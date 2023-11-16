@@ -18,6 +18,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'supplier',
 ]
 
 THIRD_PARTY_APPS = [
@@ -25,6 +26,8 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'main',
+    'core',
+    'products',
 ]
 
 MIDDLEWARE = [
@@ -85,6 +88,21 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
+# Internationalization
+
+LANGUAGE_CODE = 'pt-br'
+
+TIME_ZONE = 'America/Sao_Paulo'
+
+USE_I18N = True
+
+USE_L10N = True
+
+USE_TZ = True
+
+
+LOGIN_REDIRECT_URL = '/products'
 
 # Static files
 

@@ -18,9 +18,15 @@
   {% endblock css-import %}
 </head>
 
-<body>
-  {% block layout %}
-  {% endblock layout %}
+<body class="d-flex flex-column min-vh-100">
+  {% include 'components/navbar.html' %}
+
+  <main class="flex-grow">
+    {% block layout %}
+    {% endblock layout %}
+  </main>
+
+  {% include 'components/footer.html' %}
 
   {% block js %}
     <script src="{% static 'vendor/bootstrap-5.3.2/js/bootstrap.bundle.min.js' %}"></script>
