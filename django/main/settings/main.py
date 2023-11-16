@@ -17,6 +17,7 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'supplier',
 ]
 
 THIRD_PARTY_APPS = [
@@ -104,6 +105,8 @@ USE_L10N = True
 
 USE_TZ = True
 
+
+LOGIN_REDIRECT_URL = '/products'
 
 # Static files
 

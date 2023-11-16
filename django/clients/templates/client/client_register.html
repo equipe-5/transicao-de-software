@@ -1,46 +1,37 @@
 {% extends "base.html" %}
 {% block layout %}
+<div class="container mt-4">
+    <h2>Cadastro de Cliente</h2>
 
-<tr>
-    <td>
-        <p style="margin-left: 90px; font-size: 20px; font-family: sans-serif;">
-            CADASTRO DE CLIENTE
-        </p>
-    </td>
-</tr>
-
-<form method="post">
-    {% csrf_token %}
-    
-    
-    <div style="width: 400px; padding-left: 90px;">
+    <form  role="form" novalidate="novalidate" method="POST">
+        {% csrf_token %}
         <div class="mb-3">
-            <label for="name" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="name" aria-describedby="name" value="{{ name }}">
+            <label for="name" class="form-label">Nome do Cliente</label>
+            <input type="text" class="form-control" id="name" aria-describedby="name" class="form-control {% if form.name.errors %}is-invalid{% endif %}" value="{{ name }}"  placeholder="Insira o nome do cliente" required>
         </div>
         <div class="mb-3">
             <label for="email" class="form-label">E-mail</label>
-            <input type="email" class="form-control" id="email" aria-describedby="email" value="{{ email }}">
+            <input type="email" class="form-control" id="email" aria-describedby="email" class="form-control {% if form.email.errors %}is-invalid{% endif %}" value="{{ email }}" placeholder="Insira um e-mail válido" required> 
         </div>
         <div class="mb-3">
             <label for="cellphone" class="form-label">Celular</label>
-            <input type="text" class="form-control" id="cellphone" aria-describedby="cellphone" value="{{ cellphone }}">
+            <input type="text" class="form-control" id="cellphone" aria-describedby="cellphone" class="form-control {% if form.cellphone.errors %}is-invalid{% endif %}" value="{{ cellphone }}" placeholder="Insira um celular" required>
         </div>
         <div class="mb-3">
             <label for="rg" class="form-label">RG</label>
-            <input type="text" class="form-control" id="rg" aria-describedby="rg" value="{{ rg }}">
+            <input type="text" class="form-control" id="rg" aria-describedby="rg" class="form-control {% if form.rg.errors %}is-invalid{% endif %}" value="{{ rg }}" placeholder="Insira o RG"required>
         </div>
         <div class="mb-3">
             <label for="cpf" class="form-label">CPF</label>
-            <input type="text" class="form-control" id="cpf" aria-describedby="cpf" value="{{ cpf }}">
+            <input type="text" class="form-control" id="cpf" aria-describedby="cpf" class="form-control {% if form.cpf.errors %}is-invalid{% endif %}" value="{{ cpf }}" placeholder="Insira o CPF" required>
         </div>
         <div class="mb-3">
             <label for="cep" class="form-label">CEP</label>
-            <input type="text" class="form-control" id="cep" aria-describedby="cep" value="{{ cep }}">
+            <input type="text" class="form-control" id="cep" aria-describedby="cep" class="form-control {% if form.cep.errors %}is-invalid{% endif %}" value="{{ cep }}" placeholder="Insira o CEP" required>
         </div>
-    
-        <input type="submit" value="Salvar">
-    </div>
-    
-</form>
+
+        <input type="submit" class="btn btn-success" value="Salvar">
+
+    </form>
+</div>
 {% endblock layout %}
