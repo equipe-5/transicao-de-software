@@ -27,7 +27,6 @@ LOCAL_APPS = [
     'main',
     'core',
     'products',
-    'supplier',
 ]
 
 MIDDLEWARE = [
