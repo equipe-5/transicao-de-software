@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block layout %}
+  {% csrf_token %}
+  <div class="container mt-4">
+    <h2>Fornecedores</h2>
+    
+    <div class="d-flex justify-content-end mb-3">
+      <a href="/supplier/create/" class="btn btn-primary btn-sm">Cadastrar Fornecedor</a>
+    </div>
+    
+    <table class="table table-bordered table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CNPJ</th>
+          <th>Endereço</th>
+          <th>Número</th>
+          <th>Cidade</th>
+          <th>Estado</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for supplier in suppliers %}
+          <tr>
+            <td>{{ supplier.name }}</td>
+            <td>{{ supplier.email }}</td>
+            <td>{{ supplier.cnpj }}</td>
+            <td>{{ supplier.address }}</td>
+            <td>{{ supplier.number }}</td>
+            <td>{{ supplier.city }}</td>
+            <td>{{ supplier.state }}</td>
+            <td class="text-center">
+                <div class="btn-group-sm" role="group">
+                    <a href="/supplier/{{ supplier.id }}/edit/" class="btn btn-primary btn-sm">Editar</a>
+                    <a href="/supplier/{{ supplier.id }}/delete/" class="btn btn-danger btn-sm">Excluir</a>
+                </div>
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}

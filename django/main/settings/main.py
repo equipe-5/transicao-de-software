@@ -17,7 +17,6 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'supplier',
 ]
 
 THIRD_PARTY_APPS = [
@@ -27,6 +26,7 @@ LOCAL_APPS = [
     'main',
     'core',
     'products',
+    'supplier',
 ]
 
 MIDDLEWARE = [
