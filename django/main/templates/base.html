@@ -12,21 +12,17 @@
 
   {% block css %}
     <link rel="stylesheet" href="{% static 'vendor/bootstrap-5.3.2/css/bootstrap.min.css' %}"/>
+    <link rel="stylesheet" href="{% static 'vendor/bootstrap-icons-1.11.1/bootstrap-icons.min.css' %}"/>
   {% endblock css %}
 
   {% block css-import %}
   {% endblock css-import %}
 </head>
 
-<body class="d-flex flex-column min-vh-100">
-  {% include 'components/navbar.html' %}
+<body {% block bodystyle %}class="d-flex flex-column min-vh-100"{% endblock bodystyle %}>
 
-  <main class="flex-grow">
-    {% block layout %}
-    {% endblock layout %}
-  </main>
-
-  {% include 'components/footer.html' %}
+  {% block layout %}
+  {% endblock layout %}
 
   {% block js %}
     <script src="{% static 'vendor/bootstrap-5.3.2/js/bootstrap.bundle.min.js' %}"></script>
