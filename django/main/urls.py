@@ -9,6 +9,7 @@ urlpatterns = [
 
     path('products/', include('products.urls')),
     path('supplier/', include('supplier.urls')),
+    
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(next_page='home'), name='logout'),

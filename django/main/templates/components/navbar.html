@@ -17,6 +17,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'product-list' %}">Produtos</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'supplier-list' %}">Fornecedores</a>
+        </li>
         <!-- Incluir a rota pra sua página aqui :) -->
         {% if request.user.is_authenticated %}
         <li class="nav-item">
