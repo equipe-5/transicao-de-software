@@ -1,7 +1,11 @@
 {% extends 'base.html' %}
 {% block layout %}
 <div class="container mt-4">
-  <h2>Registrar Novo Fornecedor</h2>
+  {% if supplier %}
+    <h2>Atualizar Fornecedor</h2>
+  {% else %}
+    <h2>Registrar Novo Fornecedor</h2>
+  {% endif %}
   <form role="form" novalidate="novalidate" method="POST">
     {% csrf_token %}
     <div class="row">
@@ -14,7 +18,7 @@
             type="text"
             class="form-control {% if form.name.errors %}is-invalid{% endif %}"
             placeholder="Insira o nome do fornecedor"
-            value="{{ supplier.name }}"
+            value="{% if supplier %}{{ supplier.name }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.name.errors }}</div>
@@ -27,7 +31,7 @@
             type="text"
             class="form-control {% if form.cnpj.errors %}is-invalid{% endif %}"
             placeholder="Insira o CNPJ"
-            value="{{ supplier.cnpj }}"
+            value="{% if supplier %}{{ supplier.cnpj }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.cnpj.errors }}</div>
@@ -40,7 +44,7 @@
             type="tel"
             class="form-control {% if form.telephone.errors %}is-invalid{% endif %}"
             placeholder="Insira o telefone"
-            value="{{ supplier.telephone }}"
+            value="{% if supplier %}{{ supplier.telephone }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.telephone.errors }}</div>
@@ -55,7 +59,7 @@
             type="email"
             class="form-control {% if form.email.errors %}is-invalid{% endif %}"
             placeholder="Insira o e-mail"
-            value="{{ supplier.email }}"
+            value="{% if supplier %}{{ supplier.email }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.email.errors }}</div>
@@ -68,7 +72,7 @@
             type="tel"
             class="form-control {% if form.cellphone.errors %}is-invalid{% endif %}"
             placeholder="Insira o celular"
-            value="{{ supplier.cellphone }}"
+            value="{% if supplier %}{{ supplier.cellphone }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.cellphone.errors }}</div>
@@ -85,7 +89,7 @@
             type="text"
             class="form-control {% if form.address.errors %}is-invalid{% endif %}"
             placeholder="Insira o endereço"
-            value="{{ supplier.address }}"
+            value="{% if supplier %}{{ supplier.address }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.address.errors }}</div>
@@ -98,7 +102,7 @@
             type="text"
             class="form-control {% if form.neighborhood.errors %}is-invalid{% endif %}"
             placeholder="Insira o bairro"
-            value="{{ supplier.neighborhood }}"
+            value="{% if supplier %}{{ supplier.neighborhood }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.neighborhood.errors }}</div>
@@ -113,7 +117,7 @@
             type="text"
             class="form-control {% if form.number.errors %}is-invalid{% endif %}"
             placeholder="Insira o número"
-            value="{{ supplier.number }}"
+            value="{% if supplier %}{{ supplier.number }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.number.errors }}</div>
@@ -126,7 +130,7 @@
             type="text"
             class="form-control {% if form.cep.errors %}is-invalid{% endif %}"
             placeholder="Insira o CEP"
-            value="{{ supplier.cep }}"
+            value="{% if supplier %}{{ supplier.cep }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.cep.errors }}</div>
@@ -141,7 +145,7 @@
             type="text"
             class="form-control {% if form.city.errors %}is-invalid{% endif %}"
             placeholder="Insira a cidade"
-            value="{{ supplier.city }}"
+            value="{% if supplier %}{{ supplier.city }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.city.errors }}</div>
@@ -156,7 +160,7 @@
             type="text"
             class="form-control {% if form.state.errors %}is-invalid{% endif %}"
             placeholder="Insira o estado"
-            value="{{ supplier.state }}"
+            value="{% if supplier %}{{ supplier.state }}{% endif %}"
             required
           />
           <div class="invalid-feedback">{{ form.state.errors }}</div>
