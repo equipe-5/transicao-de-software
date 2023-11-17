@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block layout %}
+    {% include 'components/navbar.html' %}
+
+    <main class="flex-grow">
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    {% include 'components/footer.html' %}
+{% endblock layout %}

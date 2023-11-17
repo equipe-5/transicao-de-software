@@ -1,8 +1,6 @@
-"""
-Admin configuration for products.
-"""
+from django.contrib import admin
+
 from products.models import Product
 
-from django.contrib import admin
 
 admin.site.register(Product)
