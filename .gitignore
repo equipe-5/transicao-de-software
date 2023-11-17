@@ -6,7 +6,7 @@ django/main/media/*
 django/main/public_static/*
 
 # Caches
-.ruff_cache
+django/.ruff_cache
 
 ### Python ###
 
