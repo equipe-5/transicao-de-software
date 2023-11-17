@@ -8,13 +8,13 @@ from django.views.generic.edit import CreateView, DeleteView, UpdateView
 class SupplierView(CreateView):
     model = Supplier
     template_name = 'supplier_form.html'
-    fields = '__all__'
+    fields = ('email', 'cep', 'address', 'number', 'city', 'state', 'neighborhood', 'cellphone', 'telephone', 'name', 'cnpj')
     success_url = reverse_lazy('supplier-list')
 
 class SupplierUpdateView(UpdateView):
     model = Supplier
-    fields = '__all__'
     template_name = 'supplier_form.html'
+    fields = ('email', 'cep', 'address', 'number', 'city', 'state', 'neighborhood', 'cellphone', 'telephone', 'name', 'cnpj')
     context_object_name = 'supplier'
     success_url = reverse_lazy('supplier-list')
 
@@ -25,6 +25,6 @@ class SupplierListView(ListView):
     
 class SupplierDeleteView(DeleteView):
     model = Supplier
-    context_object_name = 'supplier'
     template_name = 'supplier_confirm_delete.html'
+    context_object_name = 'supplier'
     success_url = reverse_lazy('supplier-list')

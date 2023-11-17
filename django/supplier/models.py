@@ -1,5 +1,5 @@
 """Models for products app."""
-from core.models import BaseModel
+from main.models import BaseModel
 from django.db import models
 
 
