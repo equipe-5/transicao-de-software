@@ -8,11 +8,11 @@
         <div class="card-body">
           <form method="post">
             {% csrf_token %}
-            <h2 class="mb-4">Excluir Produto</h2>
-            <p class="mb-4">Você tem certeza que deseja excluir o produto "{{ product }}"?</p>
+            <h2 class="mb-4">Excluir Fornecedor</h2>
+            <p class="mb-4">Você tem certeza que deseja excluir o fornecedor "{{ supplier }}"?</p>
             <div class="d-grid gap-2">
               <input type="submit" class="btn btn-danger" value="Excluir">
-              <a href="{% url 'product-list' %}" class="btn btn-outline-secondary">Cancelar</a>
+              <a href="{% url 'supplier-list' %}" class="btn btn-outline-secondary">Cancelar</a>
             </div>
           </form>
         </div>
