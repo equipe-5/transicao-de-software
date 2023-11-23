@@ -4,7 +4,7 @@
   <form role="form" novalidate="novalidate" method="POST">
     {% csrf_token %}
     <div class="mb-3">
-      <label for="productName" class="form-label">Nome do Produto</label>
+      <label for="{{ form.name.id_for_label }}" class="form-label">Nome do Produto</label>
       <input
         id="productName"
         name="name"
@@ -17,7 +17,7 @@
       <div class="invalid-feedback">{{ form.name.errors }}</div>
     </div>
     <div class="mb-3">
-      <label for="productDescription" class="form-label">Descrição</label>
+      <label for="{{ form.description.id_for_label }}" class="form-label">Descrição</label>
       <input
         id="productDescription"
         name="description"
@@ -30,20 +30,21 @@
       <div class="invalid-feedback">{{ form.description.errors }}</div>
     </div>
     <div class="mb-3">
-      <label for="productPrice" class="form-label">Preço</label>
+      <label for="{{ form.price.id_for_label }}" class="form-label">Preço</label>
       <input
         id="productPrice"
         name="price"
-        type="number"
+        type="text"
         class="form-control {% if form.price.errors %}is-invalid{% endif %}"
         placeholder="Insira um preço"
         value="{{ product.price|floatformat:2 }}"
+        step="0.01"
         required
       />
       <div class="invalid-feedback">{{ form.price.errors }}</div>
     </div>
     <div class="mb-3">
-      <label for="productQuantity" class="form-label">Quantidade</label>
+      <label for="{{ form.quantity.id_for_label }}" class="form-label">Quantidade</label>
       <input
         id="productQuantity"
         name="quantity"
