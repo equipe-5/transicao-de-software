@@ -1,10 +1,12 @@
-"""
-URL configuration for products project.
-"""
-from products.views import (ProductCreateView, ProductDeleteView,
-                            ProductListView, ProductUpdateView)
-
 from django.urls import path
+
+from products.views import (
+    ProductCreateView,
+    ProductDeleteView,
+    ProductListView,
+    ProductUpdateView,
+)
+
 
 urlpatterns = [
     path('', ProductListView.as_view(), name='product-list'),

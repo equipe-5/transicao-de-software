@@ -1,35 +1,36 @@
-from typing import Any
-
-from supplier.forms import SupplierForm
 from supplier.models import Supplier
+from django.urls import reverse_lazy
 
-from django.http import HttpRequest, HttpResponse
-from django.views.generic import ListView, UpdateView
-from django.views.generic.edit import FormView
+from django.views.generic import ListView
+from django.views.generic.edit import CreateView, DeleteView, UpdateView
 
 
-class SupplierView(FormView):
-    form_class = SupplierForm
-    template_name = 'supplier/form.html'
+class SupplierView(CreateView):
+    model = Supplier
+    template_name = 'supplier_form.html'
+    fields = (
+        'email', 'cep', 'address', 'number', 'city', 'state',
+        'neighborhood', 'cellphone', 'telephone', 'name', 'cnpj',
+    )
+    success_url = reverse_lazy('supplier-list')
 
-    def form_valid(self, form):
-        form.save()
-        return super().form_valid(form)
-
-    def get_success_url(self) -> str:
-        return '/supplier/'
-
+class SupplierUpdateView(UpdateView):
+    model = Supplier
+    template_name = 'supplier_form.html'
+    fields = (
+        'email', 'cep', 'address', 'number', 'city', 'state',
+        'neighborhood', 'cellphone', 'telephone', 'name', 'cnpj',
+    )
+    context_object_name = 'supplier'
+    success_url = reverse_lazy('supplier-list')
 
 class SupplierListView(ListView):
     model = Supplier
-    template_name = 'supplier/list.html'
+    template_name = 'supplier_list.html'
     context_object_name = 'suppliers'
 
-
-class SupplierEditView(UpdateView):
-    form_class = SupplierForm
-    template_name = 'supplier/form.html'
-    success_url = '/supplier/'
-
-    def get_object(self, queryset=None) -> Any:
-        return Supplier.objects.get(pk=self.kwargs['pk'])
+class SupplierDeleteView(DeleteView):
+    model = Supplier
+    template_name = 'supplier_confirm_delete.html'
+    context_object_name = 'supplier'
+    success_url = reverse_lazy('supplier-list')

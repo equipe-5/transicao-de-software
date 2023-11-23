@@ -1,0 +1,65 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>{% if product %}Atualizar Produto{% else %}Registrar Novo Produto{% endif %}</h2>
+  <form role="form" novalidate="novalidate" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="{{ form.name.id_for_label }}" class="form-label">Nome do Produto</label>
+      <input
+        id="{{ form.name.id_for_label }}"
+        name="name"
+        type="text"
+        class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+        placeholder="Insira o nome do produto"
+        {% if product.name %}value="{{ product.name }}"{% endif %}
+        required
+      />
+      <div class="invalid-feedback">{{ form.name.errors }}</div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.description.id_for_label }}" class="form-label">Descrição</label>
+      <input
+        id="{{ form.description.id_for_label }}"
+        name="description"
+        type="text"
+        class="form-control {% if form.description.errors %}is-invalid{% endif %}"
+        placeholder="Insira uma descrição"
+        {% if product.description %}value="{{ product.description }}"{% endif %}
+        required
+      />
+      <div class="invalid-feedback">{{ form.description.errors }}</div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.price.id_for_label }}" class="form-label">Preço</label>
+      <input
+        id="{{ form.price.id_for_label }}"
+        name="price"
+        type="number"
+        class="form-control {% if form.price.errors %}is-invalid{% endif %}"
+        placeholder="Insira um preço"
+        {% if product.price %}value="{{ product.price|floatformat:'2u' }}"{% endif %}
+        required
+      />
+      <div class="invalid-feedback">{{ form.price.errors }}</div>
+    </div>
+    <div class="mb-3">
+      <label for="{{ form.quantity.id_for_label }}" class="form-label">Quantidade</label>
+      <input
+        id="{{ form.quantity.id_for_label }}"
+        name="quantity"
+        type="number"
+        class="form-control {% if form.quantity.errors %}is-invalid{% endif %}"
+        placeholder="Insira a quantidade em estoque"
+        {% if product.quantity %}value="{{ product.quantity }}"{% endif %}
+        required
+      />
+      <div class="invalid-feedback">{{ form.quantity.errors }}</div>
+    </div>
+    <div class="mb-3 mt-3 text-end">
+      <button type="submit" class="btn btn-success">Salvar</button>
+    </div>
+  </form>
+</div>
+{% endblock content %}

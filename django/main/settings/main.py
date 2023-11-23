@@ -18,7 +18,6 @@ DJANGO_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'supplier',
 ]
 
 THIRD_PARTY_APPS = [
@@ -27,8 +26,8 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'main',
     'clients',
-    'core',
     'products',
+    'supplier',
 ]
 
 MIDDLEWARE = [
@@ -103,8 +102,6 @@ USE_L10N = True
 USE_TZ = True
 
 
-LOGIN_REDIRECT_URL = '/products'
-
 # Static files
 
 STATIC_URL = '/static/'
@@ -120,6 +117,8 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 ROOT_URLCONF = 'main.urls'
 
 WSGI_APPLICATION = 'main.wsgi.application'
+
+LOGIN_REDIRECT_URL = '/products'
 
 
 # Logging

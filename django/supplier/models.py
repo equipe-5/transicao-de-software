@@ -1,10 +1,10 @@
+"""Models for products app."""
+from main.models import BaseModel
 from django.db import models
 
 
 # Create your models here.
-class Supplier(models.Model):
-    id = models.BigAutoField(
-        auto_created=True, primary_key=True, serialize=False, verbose_name='ID')
+class Supplier(BaseModel):
     email = models.EmailField()
     cep = models.CharField(max_length=8)
     address = models.CharField(max_length=100)
