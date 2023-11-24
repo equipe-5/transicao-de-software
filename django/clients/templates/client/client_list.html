@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "layout.html" %}
 {% block layout %}
 <div class="container mt-4">
 <h1>Clientes</h1>
@@ -16,16 +16,16 @@
                 </tr>
             </thead>
             <tbody>
-                {% for client in clients %} 
+                {% for client in clients %}
                 <tr>
                     <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ client.id }}</td>
                     <td>{{ client.name }}</td>
                     <td>{{ client.email }}</td>
-                    <td>{{ client.cellphone }}</td>   
-                    <td>{{ client.rg }}</td>   
-                    <td>{{ client.cpf }}</td>   
-                    <td>{{ client.cep }}</td>   
+                    <td>{{ client.cellphone }}</td>
+                    <td>{{ client.rg }}</td>
+                    <td>{{ client.cpf }}</td>
+                    <td>{{ client.cep }}</td>
                     <td>
                         <a
                         href="{% url 'client-update' client.id %}"

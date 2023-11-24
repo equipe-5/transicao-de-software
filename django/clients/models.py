@@ -1,4 +1,4 @@
-from core.models import BaseModel
+from main.models import BaseModel
 from django.db import models
 
 from django.urls import reverse_lazy
