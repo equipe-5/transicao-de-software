@@ -15,14 +15,14 @@ class ClientCreateView(CreateView):
 
     model = Client
     fields = ('name', 'email', 'cellphone', 'rg', 'cpf', 'cep',)
-    template_name = 'client/client_create.html'
+    template_name = 'client/client_form.html'
     success_url = reverse_lazy('client-list')
 
 class ClientUpdateView(UpdateView):
 
     model = Client
     fields = ('name', 'email', 'cellphone', 'rg', 'cpf', 'cep',)
-    template_name = 'client/client_update.html'
+    template_name = 'client/client_form.html'
     context_object_name = 'client'
     success_url = reverse_lazy('client-list')
 
