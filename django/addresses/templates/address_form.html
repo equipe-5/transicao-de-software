@@ -1,0 +1,115 @@
+{% extends 'base.html' %} {% block layout %}
+<div class="container mt-4">
+  <h2>Registrar Endereço</h2>
+  <form role="form" novalidate="novalidate" method="POST">
+    {% csrf_token %}
+    
+    <div class="row g-3 mt-2 text-dark">
+
+      <div class="form-group col-md-4">
+        <label for="zipcode" class="form-label">CEP:</label>
+        <input
+          id="zipcode"
+          name="zipcode"
+          type="text"
+          class="form-control {% if form.zipcode.errors %}is-invalid{% endif %}"
+          placeholder="CEP"
+          required
+        />
+        <div class="invalid-feedback">{{ form.zipcode.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="state" class="form-label">UF:</label>
+        <select name="state" class="form-select {% if form.state.errors %}is-invalid{% endif %}" id="id_state">
+          <option selected>UF</option>
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP">SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO</option>
+        </select>
+        <div class="invalid-feedback">{{ form.state.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="city" class="form-label">Município:</label>
+        <input
+          id="city"
+          name="city"
+          type="text"
+          class="form-control {% if form.city.errors %}is-invalid{% endif %}"
+          placeholder="Município"
+          required
+        />
+        <div class="invalid-feedback">{{ form.city.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="neighborhood" class="form-label">Bairro:</label>
+        <input
+          id="neighborhood"
+          name="neighborhood"
+          type="text"
+          class="form-control {% if form.neighborhood.errors %}is-invalid{% endif %}"
+          placeholder="Bairro"
+          required
+        />
+        <div class="invalid-feedback">{{ form.neighborhood.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="street" class="form-label">Logradouro:</label>
+        <input
+          id="street"
+          name="street"
+          type="text"
+          class="form-control {% if form.street.errors %}is-invalid{% endif %}"
+          placeholder="Logradouro"
+          required
+        />
+        <div class="invalid-feedback">{{ form.street.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="number" class="form-label">Número:</label>
+        <input
+          id="number"
+          name="number"
+          type="text"
+          class="form-control {% if form.number.errors %}is-invalid{% endif %}"
+          placeholder="Número"
+          required
+        />
+        <div class="invalid-feedback">{{ form.number.errors }}</div>
+      </div>
+
+      <div class="mb-3 mt-3 text-end">
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock layout %}

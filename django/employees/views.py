@@ -1,11 +1,9 @@
 from employees.forms import EmployeeForm
 from employees.models import Employee
-from users.models import User
 
-from django.db.transaction import atomic
-from django.http import HttpResponse
+from django.shortcuts import redirect, render
 from django.urls import reverse_lazy
-from django.views.generic import ListView
+from django.views.generic import DeleteView, ListView
 from django.views.generic.edit import FormView
 
 
@@ -18,37 +16,24 @@ class EmployeeListView(ListView):
 class EmployeeCreateView(FormView):
     model = Employee
     template_name = 'employee_form.html'
-    success_url = reverse_lazy('employee-list')
     form_class = EmployeeForm
 
-    @atomic
-    def form_valid(self, form: EmployeeForm) -> HttpResponse:
-        email = form.cleaned_data['email']
-        password = form.cleaned_data['password']
-        group = form.cleaned_data['group']
+    def get(self, request, *args, **kwargs):
+        form = EmployeeForm()
+        return render(request, self.template_name, {'form': form})
 
-        user = User.objects.create_user(
-            username=email,
-            email=email,
-            password=password
-        )
+    def post(self, request, *args, **kwargs):
+        form = EmployeeForm(request.POST)
+        print(form.is_valid())
+        if form.is_valid():
+            request.session['user_form'] = form.cleaned_data
+            return redirect('address-create')
+        return render(request, self.template_name, {'form': form})
 
-        if group == 'admin':
-            user.is_staff = True
 
-        name = form.cleaned_data['name']
-        phone = form.cleaned_data['phone']
-        number_id = form.cleaned_data['number_id']
-        role = form.cleaned_data['role']
-
-        employee = Employee(
-            user=user,
-            name=name,
-            phone=phone,
-            number_id=number_id,
-            role=role
-        )
-
-        employee.save()
-
-        return super().form_valid(form)
+class EmployeeDeleteView(DeleteView):
+    """Product Delete View."""
+    model = Employee
+    template_name = 'employee_confirm_delete.html'
+    context_object_name = 'employee'
+    success_url = reverse_lazy('employee-list')
