@@ -1,0 +1,96 @@
+{% extends 'base.html' %} {% block layout %}
+<div class="container mt-4">
+  <h2>Registrar Funcionário</h2>
+  <form role="form" novalidate="novalidate" method="POST">
+    {% csrf_token %}
+    
+    <div class="row g-3 mt-2 text-dark">
+
+      <div class="form-group col-md-6">
+        <label for="name" class="form-label">Nome:</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+          placeholder="Nome do funcionário"
+          required
+        />
+        <div class="invalid-feedback">{{ form.name.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="email" class="form-label">Email:</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          class="form-control {% if form.email.errors %}is-invalid{% endif %}"
+          placeholder="exemplo@gmail.com"
+          required
+        />
+        <div class="invalid-feedback">{{ form.email.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="phone" class="form-label">Telefone:</label>
+        <input
+          id="phone"
+          name="phone"
+          type="phone"
+          class="form-control {% if form.phone.errors %}is-invalid{% endif %}"
+          placeholder="(00)0 0000-0000"
+          required
+        />
+        <div class="invalid-feedback">{{ form.phone.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="number_id" class="form-label">Crachá:</label>
+        <input
+          id="number_id"
+          name="number_id"
+          type="text"
+          class="form-control {% if form.number_id.errors %}is-invalid{% endif %}"
+          placeholder="xxxxxxx"
+          required
+        />
+        <div class="invalid-feedback">{{ form.number_id.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="role" class="form-label">Cargo:</label>
+        <input
+          id="role"
+          name="role"
+          type="text"
+          class="form-control {% if form.role.errors %}is-invalid{% endif %}"
+          placeholder="cargo"
+          required
+        />
+        <div class="invalid-feedback">{{ form.role.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="password" class="form-label">Senha:</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+          placeholder="cargo"
+          required
+        />
+        <div class="invalid-feedback">{{ form.password.errors }}</div>
+      </div>
+
+      {{ form.group.label_tag }}
+      {{ form.group }}
+
+      <div class="mb-3 mt-3 text-end">
+        <button type="submit" class="btn btn-success">Salvar</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock layout %}
