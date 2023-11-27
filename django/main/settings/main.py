@@ -26,7 +26,7 @@ THIRD_PARTY_APPS = [
 LOCAL_APPS = [
     'main',
     'products',
-    'supplier',
+    'suppliers',
 ]
 
 MIDDLEWARE = [
