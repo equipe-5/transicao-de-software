@@ -22,8 +22,8 @@ function load_fixtures {
         python3 manage.py loaddata */fixtures/default/*.json
     fi
 
-    if [ "$(ls -A "$dir")" ]; then
-        python3 manage.py loaddata "$dir"/*.json
+    if [ "$(ls -A $dir)" ]; then
+        python3 manage.py loaddata $dir/*.json
     fi
 }
 
