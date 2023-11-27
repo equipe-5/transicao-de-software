@@ -18,7 +18,7 @@ class EmployeeCreateView(FormView):
     template_name = 'employee_form.html'
     form_class = EmployeeForm
 
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = EmployeeForm(request.POST)
         if form.is_valid():
             request.session['user_form'] = form.cleaned_data

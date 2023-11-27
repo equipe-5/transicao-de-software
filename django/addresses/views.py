@@ -15,7 +15,7 @@ class AdressCreateView(FormView):
     form_class = AddressForm
     success_url = reverse_lazy('employee-list')
 
-    def get(self, request, *args, **kwargs):
+    def get(self, request):
         user_form = request.session.get('user_form')
         if not user_form:
             return redirect('employee-create')
@@ -47,7 +47,7 @@ class AdressCreateView(FormView):
         employee.save()
 
     @atomic
-    def post(self, request, *args, **kwargs):
+    def post(self, request):
         form = AddressForm(request.POST)
         if form.is_valid():
             form = form.cleaned_data
