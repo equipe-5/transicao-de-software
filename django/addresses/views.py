@@ -25,7 +25,6 @@ class AdressCreateView(FormView):
         return render(request, self.template_name, {'form': form})
 
     def create_user(self, address):
-        print('create_user')
         user_form = self.request.session.get('user_form')
 
         user = User.objects.create_user(
@@ -53,16 +52,19 @@ class AdressCreateView(FormView):
         form = AddressForm(request.POST)
         if form.is_valid():
             form = form.cleaned_data
-            address = Address.objects.get_or_create(
+
+            address = Address.objects.create(
                 street=form['street'],
                 number=form['number'],
                 neighborhood=form['neighborhood'],
                 city=form['city'],
                 state=form['state'],
                 zipcode=form['zipcode'],
-            )[0]
+            )
+
             if self.request.session.get('user_form'):
                 self.create_user(address)
+                self.request.session.pop('user_form')
 
             return super().form_valid(form)
 

@@ -18,13 +18,8 @@ class EmployeeCreateView(FormView):
     template_name = 'employee_form.html'
     form_class = EmployeeForm
 
-    def get(self, request, *args, **kwargs):
-        form = EmployeeForm()
-        return render(request, self.template_name, {'form': form})
-
     def post(self, request, *args, **kwargs):
         form = EmployeeForm(request.POST)
-        print(form.is_valid())
         if form.is_valid():
             request.session['user_form'] = form.cleaned_data
             return redirect('address-create')

@@ -1,40 +1,16 @@
-import django.forms as forms
+from addresses.models import Address
+
+from django.forms import ModelForm
 
 
-class AddressForm(forms.Form):
-    street = forms.CharField(max_length=100)
-    number = forms.CharField(max_length=10, required=False)
-    neighborhood = forms.CharField(max_length=100)
-    city = forms.CharField(max_length=100)
-    state = forms.ChoiceField(
-        choices=[
-            ('AC', 'AC'),
-            ('AL', 'AL'),
-            ('AP', 'AP'),
-            ('AM', 'AM'),
-            ('BA', 'BA'),
-            ('CE', 'CE'),
-            ('DF', 'DF'),
-            ('ES', 'ES'),
-            ('GO', 'GO'),
-            ('MA', 'MA'),
-            ('MT', 'MT'),
-            ('MS', 'MS'),
-            ('MG', 'MG'),
-            ('PA', 'PA'),
-            ('PB', 'PB'),
-            ('PR', 'PR'),
-            ('PE', 'PE'),
-            ('PI', 'PI'),
-            ('RJ', 'RJ'),
-            ('RN', 'RN'),
-            ('RS', 'RS'),
-            ('RO', 'RO'),
-            ('RR', 'RR'),
-            ('SC', 'SC'),
-            ('SP', 'SP'),
-            ('SE', 'SE'),
-            ('TO', 'TO'),
+class AddressForm(ModelForm):
+    class Meta:
+        model = Address
+        fields = [
+            'street',
+            'number',
+            'neighborhood',
+            'city',
+            'state',
+            'zipcode',
         ]
-    )
-    zipcode = forms.CharField(max_length=10)
