@@ -1,10 +1,11 @@
-from main.models import BaseModel
 from django.db import models
-
 from django.urls import reverse_lazy
 
-class Client(BaseModel):
+from main.models import BaseModel
 
+
+class Client(BaseModel):
+    """Client model."""
     name = models.CharField(max_length= 100)
     email = models.EmailField()
     cellphone = models.CharField()
@@ -14,7 +15,7 @@ class Client(BaseModel):
 
     def __str__(self):
         """Return name."""
-        return str(self.name)
+        return self.name
 
     def get_absolute_url(self):
         """Get absolute url."""

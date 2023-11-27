@@ -1,6 +1,8 @@
-{% extends "layout.html" %} {% block content %}
+{% extends 'layout.html' %}
+
+{% block content %}
 <div class="container mt-4">
-    <h2>{% if client %}Atualizar Cliente{% else %}Registrar Novo Cliente{% endif %}</h2>
+  <h2>{% if client %}Atualizar Cliente{% else %}Registrar Novo Cliente{% endif %}</h2>
   <form role="form" novalidate="novalidate" method="POST">
     {% csrf_token %}
     <div class="mb-3">
@@ -23,7 +25,6 @@
         id="{{ form.email.id_for_label }}"
         name="email"
         type="email"
-        aria-describedby="email"
         class="form-control {% if form.email.errors %}is-invalid{% endif %}"
         placeholder="Insira um e-mail válido"
         {% if client.email %}value="{{ client.email }}"{% endif %}
@@ -38,9 +39,8 @@
         id="{{ form.cellphone.id_for_label }}"
         name="cellphone"
         type="text"
-        aria-describedby="cellphone"
         class="form-control {% if form.cellphone.errors %}is-invalid{% endif %}"
-        placeholder="Insira um celular"        
+        placeholder="Insira um número de celular"
         {% if client.cellphone %}value="{{ client.cellphone }}"{% endif %}
         required
       />
@@ -53,7 +53,6 @@
         id="{{ form.rg.id_for_label }}"
         name="rg"
         type="text"
-        aria-describedby="rg"
         class="form-control {% if form.rg.errors %}is-invalid{% endif %}"
         placeholder="Insira o RG"
         {% if client.rg %}value="{{ client.rg }}"{% endif %}
@@ -68,7 +67,6 @@
         id="{{ form.cpf.id_for_label }}"
         name="cpf"
         type="text"
-        aria-describedby="cpf"
         class="form-control {% if form.cpf.errors %}is-invalid{% endif %}"
         placeholder="Insira o CPF"
         {% if client.cpf %}value="{{ client.cpf }}"{% endif %}
@@ -77,13 +75,12 @@
       <div class="invalid-feedback">{{ form.cpf.errors }}</div>
     </div>
 
-    <div class="mb-4" style="">
+    <div class="mb-4">
       <label for="{{ form.cep.id_for_label }}" class="form-label">CEP</label>
       <input
         id="{{ form.ceep.id_for_label }}"
         name="cep"
         type="text"
-        aria-describedby="cep"
         class="form-control {% if form.cep.errors %}is-invalid{% endif %}"
         placeholder="Insira o CEP"
         {% if client.cep %}value="{{ client.cep }}"{% endif %}

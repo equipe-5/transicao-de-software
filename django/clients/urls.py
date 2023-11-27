@@ -1,7 +1,12 @@
-
-from clients.views import (ClientListView, ClientCreateView, ClientUpdateView, ClientDeleteView)
-
 from django.urls import path
+
+from clients.views import (
+    ClientCreateView,
+    ClientDeleteView,
+    ClientListView,
+    ClientUpdateView,
+)
+
 
 urlpatterns = [
     path('', ClientListView.as_view(), name='client-list'),
