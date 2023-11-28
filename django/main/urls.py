@@ -7,7 +7,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='products/', permanent=True), name='home'),
 
     path('products/', include('products.urls')),
-    path('supplier/', include('supplier.urls')),
+    path('supplier/', include('suppliers.urls')),
     path('employees/', include('employees.urls')),
     path('admin/', admin.site.urls),
     path('login/', LoginView.as_view(), name='login'),

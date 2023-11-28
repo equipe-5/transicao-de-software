@@ -28,7 +28,7 @@ LOCAL_APPS = [
     'addresses',
     'employees',
     'products',
-    'supplier',
+    'suppliers',
     'users',
 ]
 
