@@ -1,7 +1,7 @@
-from main.models import BaseModel
-
 from django.db import models
 from django.urls import reverse_lazy
+
+from main.models import BaseModel
 
 
 class Address(BaseModel):

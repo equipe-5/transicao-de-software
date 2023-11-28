@@ -8,7 +8,7 @@ from products.models import Product
 class ProductListView(ListView):
     """Product List View."""
     model = Product
-    template_name = 'product_list.html'
+    template_name = 'products/product_list.html'
     context_object_name = 'products'
 
 
@@ -16,7 +16,7 @@ class ProductCreateView(CreateView):
     """Product Create View."""
     model = Product
     fields = ('name', 'description', 'price', 'quantity')
-    template_name = 'product_form.html'
+    template_name = 'products/product_form.html'
     success_url = reverse_lazy('product-list')
 
 
@@ -24,7 +24,7 @@ class ProductUpdateView(UpdateView):
     """Product Update View."""
     model = Product
     fields = ('name', 'description', 'price', 'quantity')
-    template_name = 'product_form.html'
+    template_name = 'products/product_form.html'
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')
 
@@ -32,6 +32,6 @@ class ProductUpdateView(UpdateView):
 class ProductDeleteView(DeleteView):
     """Product Delete View."""
     model = Product
-    template_name = 'product_confirm_delete.html'
+    template_name = 'products/product_confirm_delete.html'
     context_object_name = 'product'
     success_url = reverse_lazy('product-list')

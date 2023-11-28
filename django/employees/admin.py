@@ -1,9 +1,6 @@
-"""
-Admin configuration for employees.
-"""
+from django.contrib import admin
 
 from employees.models import Employee
 
-from django.contrib import admin
 
 admin.site.register(Employee)

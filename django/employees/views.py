@@ -13,13 +13,13 @@ from django.views.generic.edit import FormView
 
 class EmployeeListView(ListView):
     model = Employee
-    template_name = 'employee_list.html'
+    template_name = 'employees/employee_list.html'
     context_object_name = 'employees'
 
 
 class EmployeeCreateView(FormView):
     model = Employee
-    template_name = 'employee_form.html'
+    template_name = 'employees/employee_form.html'
     form_class = EmployeeForm
     success_url = reverse_lazy('employee-list')
 
@@ -87,7 +87,7 @@ class EmployeeCreateView(FormView):
 
 class EmployeeUpdateView(UpdateView):
     model = Employee
-    template_name = 'employee_form.html'
+    template_name = 'employees/employee_form.html'
     form_class = EmployeeForm
     success_url = reverse_lazy('employee-list')
 
@@ -140,6 +140,6 @@ class EmployeeUpdateView(UpdateView):
 class EmployeeDeleteView(DeleteView):
     """Product Delete View."""
     model = Employee
-    template_name = 'employee_confirm_delete.html'
+    template_name = 'employees/employee_confirm_delete.html'
     context_object_name = 'employee'
     success_url = reverse_lazy('employee-list')

@@ -11,14 +11,18 @@ from django.urls import reverse_lazy
 
 class Employee(BaseModel):
     """"Employee model."""
-
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.OneToOneField(Address, on_delete=models.CASCADE)
     name = models.CharField(max_length=100)
-    phone = models.CharField(max_length=20, validators=[
-                             MinLengthValidator(14)])
-    number_id = models.CharField(max_length=100, unique=True, error_messages={
-                                 'unique': 'Crachá já registrado'})
+    phone = models.CharField(
+        max_length=20,
+        validators=[MinLengthValidator(14)],
+    )
+    number_id = models.CharField(
+        max_length=100,
+        unique=True,
+        error_messages={'unique': 'Crachá já registrado'},
+    )
     role = models.CharField(max_length=100)
 
     def __str__(self):

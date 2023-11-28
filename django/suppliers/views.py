@@ -8,14 +8,14 @@ from suppliers.models import Supplier
 class SupplierListView(ListView):
     """Supplier List View."""
     model = Supplier
-    template_name = 'supplier_list.html'
+    template_name = 'suppliers/supplier_list.html'
     context_object_name = 'suppliers'
 
 
 class SupplierCreateView(CreateView):
     """Supplier Create View."""
     model = Supplier
-    template_name = 'supplier_form.html'
+    template_name = 'suppliers/supplier_form.html'
     fields = (
         'email', 'cep', 'address', 'number', 'city', 'state',
         'neighborhood', 'cellphone', 'telephone', 'name', 'cnpj',
@@ -26,7 +26,7 @@ class SupplierCreateView(CreateView):
 class SupplierUpdateView(UpdateView):
     """Supplier Update View."""
     model = Supplier
-    template_name = 'supplier_form.html'
+    template_name = 'suppliers/supplier_form.html'
     fields = (
         'email', 'cep', 'address', 'number', 'city', 'state',
         'neighborhood', 'cellphone', 'telephone', 'name', 'cnpj',
@@ -38,6 +38,6 @@ class SupplierUpdateView(UpdateView):
 class SupplierDeleteView(DeleteView):
     """Supplier Delete View."""
     model = Supplier
-    template_name = 'supplier_confirm_delete.html'
+    template_name = 'suppliers/supplier_confirm_delete.html'
     context_object_name = 'supplier'
     success_url = reverse_lazy('supplier-list')
