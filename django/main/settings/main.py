@@ -29,7 +29,7 @@ LOCAL_APPS = [
     'clients',
     'employees',
     'products',
-    'supplier',
+    'suppliers',
     'users',
 ]
 
