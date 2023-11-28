@@ -1,14 +1,14 @@
-from addresses.models import Address
-from employees.forms import EmployeeForm
-from employees.models import Employee
-from users.models import User
-
 from django.db.transaction import atomic
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.urls import reverse_lazy
 from django.views.generic import DeleteView, ListView, UpdateView
 from django.views.generic.edit import FormView
+
+from addresses.models import Address
+from employees.forms import EmployeeForm
+from employees.models import Employee
+from users.models import User
 
 
 class EmployeeListView(ListView):
@@ -44,6 +44,7 @@ class EmployeeCreateView(FormView):
     def create_address_form(self, form) -> Address:
         street = form.cleaned_data['street']
         number = form.cleaned_data['number']
+        neighborhood = form.cleaned_data['neighborhood']
         city = form.cleaned_data['city']
         state = form.cleaned_data['state']
         zipcode = form.cleaned_data['zipcode']
@@ -51,9 +52,10 @@ class EmployeeCreateView(FormView):
         address = Address(
             street=street,
             number=number,
+            neighborhood=neighborhood,
             city=city,
             state=state,
-            zipcode=zipcode
+            zipcode=zipcode,
         )
 
         address.save()
@@ -97,11 +99,12 @@ class EmployeeUpdateView(UpdateView):
         group = form.cleaned_data['group']
 
         user_instance.username = email
-        user_instance.password = password
         user_instance.email = email
 
         if group == 'admin':
             user_instance.is_staff = True
+
+        user_instance.set_password(password)
 
         user_instance.save()
         return user_instance
@@ -109,13 +112,17 @@ class EmployeeUpdateView(UpdateView):
     def update_address(self, form, address_instance: Address) -> Address:
         street = form.cleaned_data['street']
         number = form.cleaned_data['number']
+        neighborhood = form.cleaned_data['neighborhood']
         city = form.cleaned_data['city']
         state = form.cleaned_data['state']
+        zipcode = form.cleaned_data['zipcode']
 
         address_instance.street = street
         address_instance.number = number
+        address_instance.neighborhood = neighborhood
         address_instance.city = city
         address_instance.state = state
+        address_instance.zipcode = zipcode
 
         address_instance.save()
         return address_instance
