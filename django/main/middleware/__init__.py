@@ -1,1 +1,1 @@
-from main.middleware.login import LoginRequiredMiddleware
+from main.middleware.login import LoginRequiredMiddleware  # noqa: F401
