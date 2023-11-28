@@ -1,0 +1,211 @@
+{% extends 'layout.html' %} {% block content %}
+<div class="container mt-4">
+  <h2>{% if employee %}Atualizar Funcionário{% else %}Registrar Funcionário{% endif %}</h2>
+  <form role="form" novalidate="novalidate" method="POST">
+    {% csrf_token %}
+    
+    <div class="row g-3 mt-2 text-dark">
+
+      <div class="form-group col-md-6">
+        <label for="name" class="form-label">Nome:</label>
+        <input
+          {% if employee.name %}value="{{ employee.name }}"{% endif %}
+          id="name"
+          name="name"
+          type="text"
+          class="form-control {% if form.name.errors %}is-invalid{% endif %}"
+          placeholder="Nome do funcionário"
+          required
+        />
+        <div class="invalid-feedback">{{ form.name.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="email" class="form-label">Email:</label>
+        <input
+          {% if employee.user.email %}value="{{ employee.user.email }}"{% endif %}
+          id="email"
+          name="email"
+          type="email"
+          class="form-control {% if form.email.errors %}is-invalid{% endif %}"
+          placeholder="exemplo@gmail.com"
+          required
+        />
+        <div class="invalid-feedback">{{ form.email.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="phone" class="form-label">Telefone:</label>
+        <input
+          {% if employee.phone %}value="{{ employee.phone }}"{% endif %}
+          id="phone"
+          name="phone"
+          type="phone"
+          class="form-control {% if form.phone.errors %}is-invalid{% endif %}"
+          placeholder="(00)0 0000-0000"
+          required
+        />
+        <div class="invalid-feedback">{{ form.phone.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="number_id" class="form-label">Crachá:</label>
+        <input
+          {% if employee.number_id %}value="{{ employee.number_id }}"{% endif %}
+          id="number_id"
+          name="number_id"
+          type="text"
+          class="form-control {% if form.number_id.errors %}is-invalid{% endif %}"
+          placeholder="xxxxxxx"
+          required
+        />
+        <div class="invalid-feedback">{{ form.number_id.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="role" class="form-label">Cargo:</label>
+        <input
+          {% if employee.role %}value="{{ employee.role }}"{% endif %}
+          id="role"
+          name="role"
+          type="text"
+          class="form-control {% if form.role.errors %}is-invalid{% endif %}"
+          placeholder="cargo"
+          required
+        />
+        <div class="invalid-feedback">{{ form.role.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-6">
+        <label for="password" class="form-label">Senha:</label>
+        <input
+          id="password"
+          name="password"
+          type="password"
+          class="form-control {% if form.password.errors %}is-invalid{% endif %}"
+          placeholder="sua senha"
+          required
+        />
+        <div class="invalid-feedback">{{ form.password.errors }}</div>
+      </div>
+
+      <div class="form-floating">
+        <select name="group" class="form-select {% if form.group.errors %}is-invalid{% endif %}" id="id_group">
+          <option selected>Nível de usuário</option>
+          <option value="admin">Admin</option>
+          <option value="user">Usuário</option>
+        </select>
+        <div class="invalid-feedback">{{ form.group.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="zipcode" class="form-label">CEP:</label>
+        <input
+          {% if employee.address.zipcode %}value="{{ employee.address.zipcode }}"{% endif %}
+          id="zipcode"
+          name="zipcode"
+          type="text"
+          class="form-control {% if form.zipcode.errors %}is-invalid{% endif %}"
+          placeholder="CEP"
+          required
+        />
+        <div class="invalid-feedback">{{ form.zipcode.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="state" class="form-label">UF:</label>
+        <select name="state" class="form-select {% if form.state.errors %}is-invalid{% endif %}" id="id_state">
+          <option selected>UF</option>
+          <option value="AC">AC</option>
+          <option value="AL">AL</option>
+          <option value="AP">AP</option>
+          <option value="AM">AM</option>
+          <option value="BA">BA</option>
+          <option value="CE">CE</option>
+          <option value="DF">DF</option>
+          <option value="ES">ES</option>
+          <option value="GO">GO</option>
+          <option value="MA">MA</option>
+          <option value="MT">MT</option>
+          <option value="MS">MS</option>
+          <option value="MG">MG</option>
+          <option value="PA">PA</option>
+          <option value="PB">PB</option>
+          <option value="PR">PR</option>
+          <option value="PE">PE</option>
+          <option value="PI">PI</option>
+          <option value="RJ">RJ</option>
+          <option value="RN">RN</option>
+          <option value="RS">RS</option>
+          <option value="RO">RO</option>
+          <option value="RR">RR</option>
+          <option value="SC">SC</option>
+          <option value="SP">SP</option>
+          <option value="SE">SE</option>
+          <option value="TO">TO</option>
+        </select>
+        <div class="invalid-feedback">{{ form.state.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="city" class="form-label">Município:</label>
+        <input
+          {% if employee.address.city %}value="{{ employee.address.city }}"{% endif %}
+          id="city"
+          name="city"
+          type="text"
+          class="form-control {% if form.city.errors %}is-invalid{% endif %}"
+          placeholder="Município"
+          required
+        />
+        <div class="invalid-feedback">{{ form.city.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="neighborhood" class="form-label">Bairro:</label>
+        <input
+          {% if employee.address.neighborhood %}value="{{ employee.address.neighborhood }}"{% endif %}
+          id="neighborhood"
+          name="neighborhood"
+          type="text"
+          class="form-control {% if form.neighborhood.errors %}is-invalid{% endif %}"
+          placeholder="Bairro"
+          required
+        />
+        <div class="invalid-feedback">{{ form.neighborhood.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="street" class="form-label">Logradouro:</label>
+        <input
+          {% if employee.address.street %}value="{{ employee.address.street }}"{% endif %}
+          id="street"
+          name="street"
+          type="text"
+          class="form-control {% if form.street.errors %}is-invalid{% endif %}"
+          placeholder="Logradouro"
+          required
+        />
+        <div class="invalid-feedback">{{ form.street.errors }}</div>
+      </div>
+
+      <div class="form-group col-md-4">
+        <label for="number" class="form-label">Número:</label>
+        <input
+          {% if employee.address.number %}value="{{ employee.address.number }}"{% endif %}
+          id="number"
+          name="number"
+          type="text"
+          class="form-control {% if form.number.errors %}is-invalid{% endif %}"
+          placeholder="Número"
+          required
+        />
+        <div class="invalid-feedback">{{ form.number.errors }}</div>
+      </div>
+      <div class="mb-3 mt-3 text-end">
+        <button type="submit" class="btn btn-success">Avançar</button>
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock content %}
