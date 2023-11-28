@@ -1,8 +1,8 @@
-from employees.models import Employee
-from users.models import User
-
 from django import forms
 from django.forms import ModelForm
+
+from employees.models import Employee
+from users.models import User
 
 
 class EmployeeForm(ModelForm):
@@ -52,12 +52,28 @@ class EmployeeForm(ModelForm):
 
     class Meta:
         model = Employee
-        fields = ['name', 'phone', 'number_id',
-                  'role', 'group', 'email', 'password', 'street',
-                  'number', 'neighborhood', 'city', 'state', 'zipcode']
+        fields = [
+            'name',
+            'phone',
+            'number_id',
+            'role',
+            'group',
+            'email',
+            'password',
+            'street',
+            'number',
+            'neighborhood',
+            'city',
+            'state',
+            'zipcode',
+        ]
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if User.objects.filter(email=email).exists():
+        if not self.instance.user_id:
+            return email
+
+        if User.objects.filter(email=email).exclude(pk=self.instance.user.pk).exists():
             raise forms.ValidationError('Email já cadastrado')
+
         return email
