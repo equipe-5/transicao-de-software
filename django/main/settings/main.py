@@ -1,6 +1,6 @@
+import logging.config
 import os
 import pathlib
-import logging.config
 
 BASE_DIR = pathlib.Path(__file__).resolve().parent.parent
 
@@ -25,8 +25,11 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     'main',
+    'addresses',
+    'employees',
     'products',
     'supplier',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -119,7 +122,7 @@ WSGI_APPLICATION = 'main.wsgi.application'
 
 LOGIN_REDIRECT_URL = '/products'
 
-
+AUTH_USER_MODEL = "users.User"
 # Logging
 
 LOGGING = {

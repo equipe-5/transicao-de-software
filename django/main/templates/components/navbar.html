@@ -20,6 +20,9 @@
         <li class="nav-item">
           <a class="nav-link" href="{% url 'supplier-list' %}">Fornecedores</a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'employee-list' %}">Funcionários</a>
+        </li>
         <!-- Incluir a rota pra sua página aqui :) -->
         {% if request.user.is_authenticated %}
         <li class="nav-item">
